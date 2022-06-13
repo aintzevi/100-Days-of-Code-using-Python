@@ -12,12 +12,27 @@ continue_game = True
 
 while continue_game:
     # Start user and computer hand with one card
-    user_cards = [random.choice(cards), random.choice(cards)]
-    computer_cards = [random.choice(cards), random.choice(cards)]
+    user_cards = [random.choice(cards)]
+    computer_cards = [random.choice(cards)]
+    new_card_user = random.choice(cards)
+    new_card_computer = random.choice(cards)
+
     user_sum = sum(user_cards)
     computer_sum = sum(computer_cards)
 
-    # TODO Format print to show A instead of 11 and J, Q, K sometimes instead of 10?
+    # TODO turn this check into helper function
+    # Change 11 to 1 if needed
+    if new_card_user == 11 and user_sum > 10:
+        new_card_user = 1
+    if new_card_computer == 11 and computer_sum > 10:
+        new_card_computer = 1
+
+    user_cards.append(new_card_user)
+    computer_cards.append(new_card_computer)
+
+    user_sum = sum(user_cards)
+    computer_sum = sum(computer_cards)
+
     draw_card = True
 
     while draw_card:
@@ -26,7 +41,8 @@ while continue_game:
 
         if user_sum == 21 and computer_sum == 21:
             print(f"Computer's final hand is {computer_cards}, their final score {computer_sum}")
-            print("It is a draw!")
+            print("It it's a draw!")
+            break
         elif user_sum == 21:
             print(f"Computer's final hand is {computer_cards}, their final score {computer_sum}")
             print("You win!")
@@ -46,11 +62,16 @@ while continue_game:
         else:
             hit = input("Type 'h' to hit or 's' to stand: ").lower()
             if hit == 'h':
-                user_cards.append(random.choice(cards))
-                # TODO add a check for 11 or 1
+                new_card_user = random.choice(cards)
+                if new_card_user == 11 and user_sum > 10:
+                    new_card_user = 1
+                user_cards.append(new_card_user)
                 # The computer follows a policy of drawing when under 17
                 if computer_sum < 17:
-                    computer_cards.append(random.choice(cards))
+                    new_card_computer = random.choice(cards)
+                    if new_card_computer == 11 and computer_sum > 10:
+                        new_card_computer = 1
+                    computer_cards.append(new_card_computer)
                     computer_sum = sum(computer_cards)
 
                 user_sum = sum(user_cards)
