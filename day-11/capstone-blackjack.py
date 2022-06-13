@@ -60,44 +60,50 @@ while continue_game:
             print(f"Computer drew over, you win!")
             break
         else:
-            hit = input("Type 'h' to hit or 's' to stand: ").lower()
-            if hit == 'h':
-                new_card_user = random.choice(cards)
-                if new_card_user == 11 and user_sum > 10:
-                    new_card_user = 1
-                user_cards.append(new_card_user)
-                # The computer follows a policy of drawing when under 17
-                if computer_sum < 17:
-                    new_card_computer = random.choice(cards)
-                    if new_card_computer == 11 and computer_sum > 10:
-                        new_card_computer = 1
-                    computer_cards.append(new_card_computer)
-                    computer_sum = sum(computer_cards)
+            while True:
+                hit = input("Type 'h' to hit or 's' to stand: ").lower()
+                if hit == 'h':
+                    new_card_user = random.choice(cards)
+                    if new_card_user == 11 and user_sum > 10:
+                        new_card_user = 1
+                    user_cards.append(new_card_user)
+                    # The computer follows a policy of drawing when under 17
+                    if computer_sum < 17:
+                        new_card_computer = random.choice(cards)
+                        if new_card_computer == 11 and computer_sum > 10:
+                            new_card_computer = 1
+                        computer_cards.append(new_card_computer)
+                        computer_sum = sum(computer_cards)
 
-                user_sum = sum(user_cards)
+                    user_sum = sum(user_cards)
+                    break
+                elif hit == 's':
+                    print(f"Your final hand is {user_cards}, your final score {user_sum}")
+                    print(f"Computer's final hand is {computer_cards}, their final score {computer_sum}")
 
-            elif hit == 's':
-                print(f"Your final hand is {user_cards}, your final score {user_sum}")
-                print(f"Computer's final hand is {computer_cards}, their final score {computer_sum}")
-
-                if user_sum < computer_sum:
-                    print("You lose!")
-                elif user_sum > computer_sum:
-                    print("You win!")
+                    if user_sum < computer_sum:
+                        print("You lose!")
+                    elif user_sum > computer_sum:
+                        print("You win!")
+                    else:
+                        print("It's a draw!")
+                    draw_card = False
+                    break
                 else:
-                    print("It's a draw!")
-                draw_card = False
-            # TODO Add loop here for invalid character
+                    print("There is no option for this letter, try again!")
+    while True:
+        should_continue_game = input("Do you want to play a game of BlackJack? Type 'y' or 'n': ").lower()
 
-    should_continue_game = input("Do you want to play a game of BlackJack? Type 'y' or 'n': ").lower()
-
-    if should_continue_game == 'y':
-        continue_game = True
-        os.system('clear')
-    elif should_continue_game == 'n':
-        continue_game = False
-        print("Goodbye!")
-    # TODO Handle case of invalid character input
+        if should_continue_game == 'y':
+            continue_game = True
+            os.system('clear')
+            break
+        elif should_continue_game == 'n':
+            continue_game = False
+            print("Goodbye!")
+            break
+        else:
+            print("There is no option for this letter, try again!")
 
 
 
