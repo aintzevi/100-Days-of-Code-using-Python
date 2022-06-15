@@ -9,8 +9,9 @@ def draw_card():
 
 def calculate_score(cards_list):
     score = sum(cards_list)
-    if cards_list.__contains__(11) and score > 21:
-        cards_list[cards_list.index(11)] = 1
+    if 11 in cards_list and score > 21:
+        cards_list.remove(11)
+        cards_list.append(1)
         score -= 10
     if score == 21:
         score = 0
