@@ -16,10 +16,10 @@ PENNY = 0.01
 
 
 def print_report(resources):
-    print(f"Water: {resources['water']}")
-    print(f"Milk: {resources['milk']}")
-    print(f"Coffee: {resources['coffee']}")
-    print(f"Money: {profit}")
+    print(f"Water: {resources['water']}ml")
+    print(f"Milk: {resources['milk']}ml")
+    print(f"Coffee: {resources['coffee']}gr")
+    print(f"Money: ${profit}")
 
 
 def check_resources(choice):
