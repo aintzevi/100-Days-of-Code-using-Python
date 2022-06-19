@@ -24,7 +24,7 @@ def print_report(resources):
 
 def check_resources(choice):
     for item in resources:
-        if item <= data.MENU[choice]["ingredients"][item]:
+        if resources[item] <= data.MENU[choice]["ingredients"][item]:
             print(f"Sorry there is not enough {item}.")
             return False
     return True
