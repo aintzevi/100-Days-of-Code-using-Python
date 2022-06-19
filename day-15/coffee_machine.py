@@ -57,7 +57,7 @@ while is_on:
                 profit += data.MENU[choice]["cost"]
                 update_resources(choice)
                 print(f"Here is ${change} in change.")
-                print(f"Here is your {choice}. Enjoy!")
+                print(f"Here is your {choice} ☕. Enjoy!")
 
             else:
                 print("Sorry that's not enough money. Money refunded.")
