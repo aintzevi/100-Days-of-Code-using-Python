@@ -16,6 +16,8 @@ PENNY = 0.01
 
 
 def print_report():
+    """Prints the resources left in the machine, as well as the money inside"""
+
     print(f"Water: {resources['water']}ml")
     print(f"Milk: {resources['milk']}ml")
     print(f"Coffee: {resources['coffee']}gr")
@@ -23,6 +25,7 @@ def print_report():
 
 
 def check_resources():
+    """Returns True if the resources are sufficient to make the requested coffee or False otherwise"""
     for item in resources:
         if resources[item] <= data.MENU[choice]["ingredients"][item]:
             print(f"Sorry there is not enough {item}.")
@@ -31,12 +34,14 @@ def check_resources():
 
 
 def update_resources():
+    """Updates the resources by removing resources needed when making a coffee"""
     resources["water"] -= data.MENU[choice]["ingredients"]["water"]
     resources["milk"] -= data.MENU[choice]["ingredients"]["milk"]
     resources["coffee"] -= data.MENU[choice]["ingredients"]["coffee"]
 
 
 def insert_money():
+    """Handles the coin insertion from the user and returns the overall amount the user has given"""
     print("Please insert coin.")
     quarters = int(input("How many quarters?: "))
     dimes = int(input("How many dimes?: "))
