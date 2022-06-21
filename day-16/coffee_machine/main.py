@@ -20,6 +20,7 @@ while is_on:
         is_on = False
     elif choice == "report":
         coffee_maker.report()
+        money_machine.report()
     else:
         if menu_item is None:
             continue
