@@ -15,14 +15,14 @@ NICKEL = 0.05
 PENNY = 0.01
 
 
-def print_report(resources):
+def print_report():
     print(f"Water: {resources['water']}ml")
     print(f"Milk: {resources['milk']}ml")
     print(f"Coffee: {resources['coffee']}gr")
     print(f"Money: ${profit}")
 
 
-def check_resources(choice):
+def check_resources():
     for item in resources:
         if resources[item] <= data.MENU[choice]["ingredients"][item]:
             print(f"Sorry there is not enough {item}.")
@@ -30,7 +30,7 @@ def check_resources(choice):
     return True
 
 
-def update_resources(choice):
+def update_resources():
     resources["water"] -= data.MENU[choice]["ingredients"]["water"]
     resources["milk"] -= data.MENU[choice]["ingredients"]["milk"]
     resources["coffee"] -= data.MENU[choice]["ingredients"]["coffee"]
@@ -51,11 +51,11 @@ is_on = True
 while is_on:
     choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
     if choice == "espresso" or choice == "latte" or choice == "cappuccino":
-        if check_resources(choice):
+        if check_resources():
             change = insert_money() - data.MENU[choice]["cost"]
             if change >= 0:
                 profit += data.MENU[choice]["cost"]
-                update_resources(choice)
+                update_resources()
                 print(f"Here is ${change} in change.")
                 print(f"Here is your {choice} ☕. Enjoy!")
 
@@ -63,7 +63,7 @@ while is_on:
                 print("Sorry that's not enough money. Money refunded.")
 
     elif choice == "report":
-        print_report(resources)
+        print_report()
     elif choice == "off":
         is_on = False
     else:
