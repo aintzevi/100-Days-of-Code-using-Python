@@ -1,5 +1,6 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 from paddle import Paddle
+from ball import Ball
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -9,10 +10,12 @@ screen.screensize(SCREEN_WIDTH, SCREEN_HEIGHT)
 screen.bgcolor("black")
 screen.title("Pong")
 
-
 screen.tracer(0)
+
 player_1 = Paddle((-SCREEN_WIDTH / 2 + 20, 0))
 player_2 = Paddle((SCREEN_WIDTH / 2 - 20, 0))
+
+ball = Ball()
 
 screen.listen()
 
@@ -27,6 +30,7 @@ while game_is_on:
     screen.onkey(player_2.up, "i")
     screen.onkey(player_2.down, "k")
 
+    ball.move()
     screen.update()
 
 
