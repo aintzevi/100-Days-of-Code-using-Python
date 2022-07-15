@@ -4,9 +4,10 @@ from turtle import Turtle
 class Paddle(Turtle):
     def __init__(self):
         super().__init__()
+        self.blocks = []
         self.penup()
         self.color("white")
-        self.turtlesize(0.5, 5)
+        self.turtlesize(0.5, 3)
         self.setheading(90)
         self.shape("square")
         self.speed("fastest")

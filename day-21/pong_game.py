@@ -1,6 +1,5 @@
 from turtle import Turtle, Screen
 from paddle import Paddle
-import time
 
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 500
@@ -12,7 +11,11 @@ screen.title("Pong game")
 
 
 screen.tracer(0)
-paddle = Paddle()
+player_1 = Paddle()
+player_2 = Paddle()
+
+player_1.goto(-SCREEN_WIDTH / 2 - 50, 0)
+player_2.goto(SCREEN_WIDTH / 2 + 50, 0)
 
 screen.listen()
 
@@ -20,7 +23,14 @@ game_is_on = True
 
 while game_is_on:
     screen.update()
-    screen.onkey(paddle.up, "Up")
-    screen.onkey(paddle.down, "Down")
+
+    screen.onkey(player_1.up, "w")
+    screen.onkey(player_1.down, "a")
+
+    screen.onkey(player_2.up, "i")
+    screen.onkey(player_2.down, "k")
+
+    screen.update()
+
 
 screen.exitonclick()
