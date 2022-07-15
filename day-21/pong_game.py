@@ -11,11 +11,8 @@ screen.title("Pong")
 
 
 screen.tracer(0)
-player_1 = Paddle()
-player_2 = Paddle()
-
-player_1.goto(-SCREEN_WIDTH / 2 + 20, 0)
-player_2.goto(SCREEN_WIDTH / 2 - 20, 0)
+player_1 = Paddle((-SCREEN_WIDTH / 2 + 20, 0))
+player_2 = Paddle((SCREEN_WIDTH / 2 - 20, 0))
 
 screen.listen()
 
