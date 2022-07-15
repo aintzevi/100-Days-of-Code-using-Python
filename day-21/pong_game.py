@@ -1,3 +1,4 @@
+import time
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
@@ -18,20 +19,18 @@ player_2 = Paddle((SCREEN_WIDTH / 2 - 20, 0))
 ball = Ball()
 
 screen.listen()
+# Paddle controls
+screen.onkey(player_1.up, "w")
+screen.onkey(player_1.down, "s")
+screen.onkey(player_2.up, "i")
+screen.onkey(player_2.down, "k")
 
 game_is_on = True
 
 while game_is_on:
+    # For the ball to go slower, use sleep. We could alternatively lower the amount by which the ball moves in each step
+    time.sleep(0.1)
     screen.update()
-
-    screen.onkey(player_1.up, "w")
-    screen.onkey(player_1.down, "s")
-
-    screen.onkey(player_2.up, "i")
-    screen.onkey(player_2.down, "k")
-
     ball.move()
-    screen.update()
-
 
 screen.exitonclick()
