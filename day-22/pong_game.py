@@ -31,7 +31,7 @@ game_is_on = True
 
 while game_is_on:
     # For the ball to go slower, use sleep. We could alternatively lower the amount by which the ball moves in each step
-    # time.sleep(0.1)
+    time.sleep(0.09)
     screen.update()
     ball.move()
 
