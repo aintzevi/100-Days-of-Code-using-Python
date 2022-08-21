@@ -35,5 +35,10 @@ while game_is_on:
 
     # Collision with up or down wall, meaning the ball should bounce
     if ball.ycor() > 280 or ball.ycor() < -280:
-        ball.bounce()
+        ball.bounce_y()
+
+    # Detect collision with the paddle (distance is not enough because of the paddle shape)
+
+    if (ball.distance(player_2) < 50 and ball.xcor() > 320) or (ball.distance(player_1) < 50 and ball.xcor() < -320):
+        ball.bounce_x()
 screen.exitonclick()
