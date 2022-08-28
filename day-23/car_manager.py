@@ -8,8 +8,8 @@ MOVE_INCREMENT = 10
 
 
 class CarManager(Turtle):
-    """Car constructor where all the active cars are kept"""
     def __init__(self):
+        """Car constructor where all the active cars are kept"""
         super().__init__()
         self.hideturtle()
         self.active_cars = []

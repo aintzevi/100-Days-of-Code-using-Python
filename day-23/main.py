@@ -27,6 +27,9 @@ while game_is_on:
     car_manager.move(scoreboard.level)
     # Detect car collision
     # Detect finish line passing
+
+    scoreboard.game_over()
+
     time.sleep(0.1)
     screen.update()
 
