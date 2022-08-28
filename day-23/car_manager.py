@@ -10,6 +10,7 @@ MOVE_INCREMENT = 10
 class CarManager(Turtle):
     def __init__(self):
         super().__init__()
+        self.hideturtle()
         self.active_cars = []
 
     def create(self, width, height):
@@ -20,8 +21,6 @@ class CarManager(Turtle):
 
         car1 = Turtle()
         car2 = Turtle()
-        car1.hideturtle()
-        car2.hideturtle()
         car1.penup()
         car2.penup()
 
@@ -32,8 +31,8 @@ class CarManager(Turtle):
         car2.shape("square")
 
         initial_y_pos = random.randint(-height / 2 + 20, height / 2 - 20)
-        car1_initial_position = (width / 2 - 40, initial_y_pos)
-        car2_initial_position = (width / 2 - 20, initial_y_pos)
+        car1_initial_position = (width / 2 - 20, initial_y_pos)
+        car2_initial_position = (width / 2, initial_y_pos)
         car1.setposition(car1_initial_position)
         car2.setposition(car2_initial_position)
 
@@ -47,10 +46,9 @@ class CarManager(Turtle):
 
         time.sleep(0.1)
 
-    def move(self):
+    def move(self, level):
         for car in self.active_cars:
-            car[0].forward(MOVE_INCREMENT)
-            car[1].forward(MOVE_INCREMENT)
+            car[0].forward(MOVE_INCREMENT * level)
+            car[1].forward(MOVE_INCREMENT * level)
 
-        # TODO Increase speed by level
 
