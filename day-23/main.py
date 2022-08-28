@@ -31,7 +31,7 @@ while game_is_on:
         scoreboard.update_score()
 
     for car in car_manager.active_cars:
-        if player.distance(car[0]) < 15 or player.distance(car[1]) < 15:
+        if player.distance(car) < 25:
             print("Squish")
             scoreboard.game_over()
             game_is_on = False
