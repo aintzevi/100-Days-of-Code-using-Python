@@ -25,10 +25,17 @@ while game_is_on:
     # Cars continuously generated in every step
     car_manager.create(WIDTH, HEIGHT)
     car_manager.move(scoreboard.level)
-    # Detect car collision
-    # Detect finish line passing
 
-    scoreboard.game_over()
+    if player.ycor() > HEIGHT / 2 - 5:
+        player.return_to_start()
+        scoreboard.update_score()
+
+    for car in car_manager.active_cars:
+        if player.distance(car[0]) < 15 or player.distance(car[1]) < 15:
+            print("Squish")
+            scoreboard.game_over()
+            game_is_on = False
+            break
 
     time.sleep(0.1)
     screen.update()
