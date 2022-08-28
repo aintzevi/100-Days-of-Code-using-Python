@@ -8,15 +8,16 @@ MOVE_INCREMENT = 10
 
 
 class CarManager(Turtle):
+    """Car constructor where all the active cars are kept"""
     def __init__(self):
         super().__init__()
         self.hideturtle()
         self.active_cars = []
 
     def create(self, width, height):
-        # Call car creation that creates cars of random colours in random intervals of time, in random spaces.
-        # Each car then moves towards the negative x
-        # Create a car
+        """Creates a car in every run, in a random height position inside the window limits."""
+
+        # A car is consisted of two square back to back blocks
         car = []
 
         car1 = Turtle()
@@ -47,6 +48,7 @@ class CarManager(Turtle):
         time.sleep(0.1)
 
     def move(self, level):
+        """Every car in the window moves forward by a specific increment that increases overtime"""
         for car in self.active_cars:
             car[0].forward(MOVE_INCREMENT * level)
             car[1].forward(MOVE_INCREMENT * level)
