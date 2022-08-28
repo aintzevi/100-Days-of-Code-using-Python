@@ -7,12 +7,11 @@ STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
 
 
-class CarManager(Turtle):
+class CarManager():
     def __init__(self):
         """Car constructor where all the active cars are kept"""
-        super().__init__()
-        self.hideturtle()
         self.active_cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
 
     def create(self, width, height):
         """Creates a car in every run, in a random height position inside the window limits."""
@@ -36,7 +35,10 @@ class CarManager(Turtle):
 
         time.sleep(0.08)
 
-    def move(self, level):
+    def move(self):
         """Every car in the window moves forward by a specific increment that increases overtime"""
         for car in self.active_cars:
-            car.forward(MOVE_INCREMENT * level)
+            car.forward(self.car_speed)
+
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT

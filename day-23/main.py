@@ -24,10 +24,11 @@ while game_is_on:
 
     # Cars continuously generated in every step
     car_manager.create(WIDTH, HEIGHT)
-    car_manager.move(scoreboard.level)
+    car_manager.move()
 
     if player.is_at_finish_line():
         player.return_to_start()
+        car_manager.level_up()
         scoreboard.update_score()
 
     for car in car_manager.active_cars:
