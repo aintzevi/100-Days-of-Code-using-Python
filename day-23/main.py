@@ -21,14 +21,14 @@ screen.listen()
 screen.onkey(player.up, "p")
 
 while game_is_on:
-    time.sleep(0.1)
-    screen.update()
 
     # Cars continuously generated in every step
     car_manager.create(WIDTH, HEIGHT)
-    car_manager.move()
+    car_manager.move(scoreboard.level)
     # Detect car collision
     # Detect finish line passing
+    time.sleep(0.1)
+    screen.update()
 
 screen.exitonclick()
 
