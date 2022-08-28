@@ -20,6 +20,8 @@ class CarManager(Turtle):
 
         car1 = Turtle()
         car2 = Turtle()
+        car1.hideturtle()
+        car2.hideturtle()
         car1.penup()
         car2.penup()
 
