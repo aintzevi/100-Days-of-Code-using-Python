@@ -26,7 +26,7 @@ while game_is_on:
     car_manager.create(WIDTH, HEIGHT)
     car_manager.move(scoreboard.level)
 
-    if player.ycor() > HEIGHT / 2 - 5:
+    if player.is_at_finish_line():
         player.return_to_start()
         scoreboard.update_score()
 
