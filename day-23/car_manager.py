@@ -17,35 +17,39 @@ class CarManager(Turtle):
     def create(self, width, height):
         """Creates a car in every run, in a random height position inside the window limits."""
 
-        # A car is consisted of two square back to back blocks
-        car = []
+        # Add extra random option of 1 in 3 creation of a car
+        randomizer = random.randint(0, 2)
+        if randomizer == 0:
+            # A car is consisted of two square back to back blocks
+            car = []
 
-        car1 = Turtle()
-        car2 = Turtle()
-        car1.penup()
-        car2.penup()
+            car1 = Turtle()
+            car2 = Turtle()
+            car1.penup()
+            car2.penup()
 
-        car_color = random.choice(COLORS)
-        car1.color(car_color)
-        car2.color(car_color)
-        car1.shape("square")
-        car2.shape("square")
+            car_color = random.choice(COLORS)
+            car1.color(car_color)
+            car2.color(car_color)
+            car1.shape("square")
+            car2.shape("square")
 
-        initial_y_pos = random.randint(-height / 2 + 20, height / 2 - 20)
-        car1_initial_position = (width / 2 - 20, initial_y_pos)
-        car2_initial_position = (width / 2, initial_y_pos)
-        car1.setposition(car1_initial_position)
-        car2.setposition(car2_initial_position)
+            # Adjust bottom limit, for the turtle to not immediately die when leveling up
+            initial_y_pos = random.randint(-height / 2 + 50, height / 2 - 20)
+            car1_initial_position = (width / 2 - 20, initial_y_pos)
+            car2_initial_position = (width / 2, initial_y_pos)
+            car1.setposition(car1_initial_position)
+            car2.setposition(car2_initial_position)
 
-        car1.setheading(180)
-        car2.setheading(180)
+            car1.setheading(180)
+            car2.setheading(180)
 
-        car.append(car1)
-        car.append(car2)
+            car.append(car1)
+            car.append(car2)
 
-        self.active_cars.append(car)
+            self.active_cars.append(car)
 
-        time.sleep(0.1)
+        time.sleep(0.08)
 
     def move(self, level):
         """Every car in the window moves forward by a specific increment that increases overtime"""
