@@ -36,9 +36,6 @@ while len(guessed_states) < 50:
         # without the data type information etc.
         city_name.write(answer_state)
 
-    print(answer_state)
-
-screen.exitonclick()
 
 
 
