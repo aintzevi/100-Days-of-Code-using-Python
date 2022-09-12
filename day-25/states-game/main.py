@@ -11,12 +11,21 @@ turtle.shape(image)
 
 data = pandas.read_csv("data/50_states.csv")
 states = data.state.to_list()
+guessed_states = []
+states_not_found = []
 
-game_is_on = True
-
-while game_is_on:
-    answer_state = screen.textinput(title="Guess the state: ", prompt="What's another state's name?").capitalize()
-    if answer_state in states:
+while len(guessed_states) < 50:
+    # .title capitalizes each first word. Careful with quote marks and punctuation though
+    answer_state = screen.textinput(title=f"Guess the state: {len(guessed_states)}/50 correct", prompt="What's another state's name?").title()
+    if answer_state == "Exit":
+        for state in states:
+            if state not in guessed_states:
+                states_not_found.append(state)
+        df = pandas.DataFrame(states_not_found)
+        df.to_csv("data/leftover_states.csv")
+        break
+    if answer_state in states and answer_state not in guessed_states:
+        guessed_states.append(answer_state)
         # Specific row of answer state
         state_data = data[data.state == answer_state]
         city_name = turtle.Turtle()
