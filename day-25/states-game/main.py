@@ -18,9 +18,13 @@ while len(guessed_states) < 50:
     # .title capitalizes each first word. Careful with quote marks and punctuation though
     answer_state = screen.textinput(title=f"Guess the state: {len(guessed_states)}/50 correct", prompt="What's another state's name?").title()
     if answer_state == "Exit":
-        for state in states:
-            if state not in guessed_states:
-                states_not_found.append(state)
+        # With list comprehension
+        states_not_found = [state for state in states if state not in guessed_states]
+        # Without list comprehension
+
+        # for state in states:
+        #     if state not in guessed_states:
+        #         states_not_found.append(state)
         df = pandas.DataFrame(states_not_found)
         df.to_csv("data/leftover_states.csv")
         break
